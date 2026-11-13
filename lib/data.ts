@@ -63,20 +63,19 @@ export async function getRulesText(): Promise<string> {
   return readFile(path.join(DATA_DIR, "summary-rules.txt"), "utf8");
 }
 
-/** Drops rule findings that the AI already reported on the same excerpt and rule. */
+/** Drops rule findings the AI already reported: same type and overlapping excerpt, or same omission evidence. */
 function mergeFindings(aiFindings: Finding[], ruleFindings: Finding[]): Finding[] {
-  const extra = ruleFindings.filter(
-    (ruleFinding) =>
-      !aiFindings.some(
-        (ai) =>
-          ai.summaryExcerpt !== null &&
-          ruleFinding.summaryExcerpt !== null &&
-          ai.rule.toLowerCase() === ruleFinding.rule.toLowerCase() &&
-          (ai.summaryExcerpt.includes(ruleFinding.summaryExcerpt) ||
-            ruleFinding.summaryExcerpt.includes(ai.summaryExcerpt)),
-      ),
-  );
+  const extra = ruleFindings.filter((ruleFinding) => !aiFindings.some((ai) => isSameProblem(ai, ruleFinding)));
   return [...aiFindings, ...extra].sort(compareFindings);
+}
+
+function isSameProblem(a: Finding, b: Finding): boolean {
+  if (a.summaryExcerpt && b.summaryExcerpt) {
+    const x = a.summaryExcerpt.toLowerCase();
+    const y = b.summaryExcerpt.toLowerCase();
+    return x.includes(y) || y.includes(x);
+  }
+  return a.type === b.type && a.turnIds.some((id) => b.turnIds.includes(id));
 }
 
 const SEVERITY_ORDER = { material: 0, minor: 1 } as const;

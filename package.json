@@ -6,7 +6,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "analyse": "node --env-file-if-exists=.env.local scripts/analyse.ts"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
@@ -34,5 +35,6 @@
     "tailwindcss": "^4.3.5",
     "typescript": "^6.0.3"
   },
-  "private": true
+  "private": true,
+  "type": "module"
 }

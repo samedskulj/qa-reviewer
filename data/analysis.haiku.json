@@ -1,0 +1,2200 @@
+[
+  {
+    "callId": "CALL-001",
+    "suggestedVerdict": "acceptable",
+    "rationale": "The summary is accurate and follows the rules. DPA was completed (name, DOB and address verified at T03-T04). The inbound direction is correct (T02). Arrears are referenced without a figure, and the payment is recorded as 'Payment made' with no amount. The new collection date of 9 November is correct, since 8 November 2026 is a Sunday. The employer is not named and the customer's name is absent. The 'next steps' terminology is used. The only possible imprecision, 'last working day of the month' where the transcript says 'last working day', is trivial and does not change what a colleague would do.",
+    "findings": [],
+    "checks": [
+      {
+        "category": "Data Protection (DPA)",
+        "note": "Name, DOB and address/postcode were verified before account discussion.",
+        "turnIds": [
+          "T03",
+          "T04",
+          "T05"
+        ]
+      },
+      {
+        "category": "Contact Outcome (direction)",
+        "note": "Customer initiated the call to query a missed-payment text, so inbound is correct.",
+        "turnIds": [
+          "T02",
+          "T01"
+        ]
+      },
+      {
+        "category": "Account Status",
+        "note": "Arrears were discussed and the summary correctly gives no numerical value.",
+        "turnIds": [
+          "T05"
+        ]
+      },
+      {
+        "category": "Customer Situation",
+        "note": "Specific cause (employer changed payday to the fifth) is reported without the employer name.",
+        "turnIds": [
+          "T06",
+          "T07",
+          "T08"
+        ]
+      },
+      {
+        "category": "Actions Taken / Payment made",
+        "note": "Successful card payment recorded as 'Payment made' with no amount.",
+        "turnIds": [
+          "T09",
+          "T15"
+        ]
+      },
+      {
+        "category": "Promises / Future Dates",
+        "note": "Direct Debit moved to the eighth; next collection of £240 on 9 November is correct, as the eighth is a Sunday in 2026.",
+        "turnIds": [
+          "T17",
+          "T18",
+          "T19"
+        ]
+      },
+      {
+        "category": "Understanding",
+        "note": "Customer checked the plan and the agent confirmed it was correct; summary reflects this.",
+        "turnIds": [
+          "T20",
+          "T21"
+        ]
+      },
+      {
+        "category": "Next Steps terminology",
+        "note": "Uses 'next steps' and does not use 'further action'.",
+        "turnIds": [
+          "T21"
+        ]
+      },
+      {
+        "category": "Anonymity and redaction",
+        "note": "No customer or agent names, and no account or bank identifiers, appear in the summary.",
+        "turnIds": [
+          "T02",
+          "T04"
+        ]
+      },
+      {
+        "category": "Hallucination handling",
+        "note": "Transcript note on secure card entry was correctly ignored; no hallucinated content appears in the summary.",
+        "turnIds": [
+          "T14"
+        ]
+      }
+    ],
+    "model": "claude-haiku-5-5",
+    "generatedAt": "2026-11-13T07:57:52.262Z"
+  },
+  {
+    "callId": "CALL-002",
+    "suggestedVerdict": "misleading",
+    "rationale": "The summary gets DPA, call direction, the clutch repair cost, the I&E refusal, the declined same-day payment attempt and the 26 October call-back right. However, it misstates the promise to pay: the customer agreed to £100 on Friday 23 October, not £150. A colleague would prepare for the wrong amount, so the verdict is misleading. The summary also omits the customer's stated cash-flow pressures (about £12 in the account, petrol and electricity costs), which are a minor gap.",
+    "findings": [
+      {
+        "id": "CALL-002-ai-1",
+        "source": "ai",
+        "type": "contradiction",
+        "severity": "material",
+        "certainty": "definite",
+        "summaryExcerpt": "The customer agreed to pay £150 through the online portal on 23 October",
+        "turnIds": [
+          "T14",
+          "T16"
+        ],
+        "rule": "Promises to Pay: exact commitment for future payments (amount, date, method) must be accurate.",
+        "explanation": "The customer first mentioned £150 but then reduced it, saying 'It'll have to be a hundred', and confirmed '£100 on the twenty-third' at T16.",
+        "suggestedCorrection": "The customer agreed to pay £100 through the online portal on 23 October.",
+        "validationNotes": []
+      },
+      {
+        "id": "CALL-002-ai-2",
+        "source": "ai",
+        "type": "omission",
+        "severity": "minor",
+        "certainty": "uncertain",
+        "summaryExcerpt": null,
+        "turnIds": [
+          "T12",
+          "T14"
+        ],
+        "rule": "Customer's Situation & Ability to Pay: include any information affecting ability to pay now or in future.",
+        "explanation": "The customer said only about £12 was in the account and that petrol and electricity costs limited what they could pay, but the summary does not mention these factors.",
+        "suggestedCorrection": "Add that the customer had about £12 in the account and needed to cover petrol and electricity costs, which limited the amount they could pay on Friday.",
+        "validationNotes": []
+      }
+    ],
+    "checks": [
+      {
+        "category": "DPA",
+        "note": "Name, date of birth and address were verified and the agent confirmed security; 'DPA completed' is correct.",
+        "turnIds": [
+          "T05",
+          "T06",
+          "T07"
+        ]
+      },
+      {
+        "category": "Contact outcome",
+        "note": "Agent opened with a specific-person greeting, so this was an outbound call that reached the customer.",
+        "turnIds": [
+          "T01",
+          "T02"
+        ]
+      },
+      {
+        "category": "Account status",
+        "note": "Arrears were discussed and the summary correctly gives no arrears figure.",
+        "turnIds": [
+          "T07"
+        ]
+      },
+      {
+        "category": "Customer situation",
+        "note": "Clutch repair costing £780 with unchanged hours and wages is correctly reported.",
+        "turnIds": [
+          "T08",
+          "T10"
+        ]
+      },
+      {
+        "category": "I&E refusal",
+        "note": "Customer declined the I&E assessment and the agent recorded the refusal.",
+        "turnIds": [
+          "T17",
+          "T18",
+          "T19"
+        ]
+      },
+      {
+        "category": "Payment attempt",
+        "note": "Agent asked for a card payment and the customer declined, as the summary states.",
+        "turnIds": [
+          "T11",
+          "T12"
+        ]
+      },
+      {
+        "category": "Next steps",
+        "note": "Call-back on Monday 26 October after 4 pm is correct, and 'next steps' terminology is used.",
+        "turnIds": [
+          "T21",
+          "T22",
+          "T23"
+        ]
+      },
+      {
+        "category": "Promise to pay date and method",
+        "note": "Friday is 23 October and the online portal method is correct; only the amount is wrong.",
+        "turnIds": [
+          "T15",
+          "T16"
+        ]
+      }
+    ],
+    "model": "claude-haiku-5-5",
+    "generatedAt": "2026-11-13T07:58:02.778Z"
+  },
+  {
+    "callId": "CALL-003",
+    "suggestedVerdict": "misleading",
+    "rationale": "The summary correctly records DPA, inbound direction, the thirty-day hold, the Citizens Advice referral, the signposting and the next call date. It is misleading on vulnerability: it records consent that the customer refused and omits the explicit food shortage. It also breaches the rule against stating arrears amounts.",
+    "findings": [
+      {
+        "id": "CALL-003-ai-1",
+        "source": "ai",
+        "type": "contradiction",
+        "severity": "material",
+        "certainty": "definite",
+        "summaryExcerpt": "Consent gained to record vulnerability",
+        "turnIds": [
+          "T09",
+          "T10",
+          "T11"
+        ],
+        "rule": "Vulnerability & Consent: state 'Consent gained to record vulnerability' only where the agent asks permission and the customer agrees.",
+        "explanation": "The customer refused to have the health information written down and the agent said it would not be recorded, so consent was not gained.",
+        "suggestedCorrection": "Customer reported sleep problems and anxiety but declined to have health information recorded, and the agent agreed not to record it.",
+        "validationNotes": []
+      },
+      {
+        "id": "CALL-003-ai-2",
+        "source": "ai",
+        "type": "omission",
+        "severity": "material",
+        "certainty": "definite",
+        "summaryExcerpt": null,
+        "turnIds": [
+          "T08"
+        ],
+        "rule": "Customer's Situation: include specific details of any severe hardship or crisis, without generalising.",
+        "explanation": "The customer said they had no money for food and depended on their sister for shopping, which the summary does not mention.",
+        "suggestedCorrection": "Customer has no money for food and is relying on their sister for shopping.",
+        "validationNotes": []
+      },
+      {
+        "id": "CALL-003-ai-3",
+        "source": "ai",
+        "type": "rule_breach",
+        "severity": "minor",
+        "certainty": "definite",
+        "summaryExcerpt": "arrears of £460 were discussed",
+        "turnIds": [
+          "T05"
+        ],
+        "rule": "Arrears/Balances: never include specific numerical values for current arrears or total balance.",
+        "explanation": "The summary states the arrears amount, which the rules prohibit, although the fact that arrears were discussed is correct.",
+        "suggestedCorrection": "Arrears were discussed.",
+        "validationNotes": []
+      },
+      {
+        "id": "CALL-003-ai-4",
+        "source": "ai",
+        "type": "unsupported",
+        "severity": "minor",
+        "certainty": "uncertain",
+        "summaryExcerpt": "with the agent checking the customer’s understanding",
+        "turnIds": [
+          "T22",
+          "T23"
+        ],
+        "rule": "Affordability/Compliance: Understanding checks confirm the customer understood the plan.",
+        "explanation": "The agent did not explicitly check understanding; the customer summarised the plan back and the agent confirmed it, which is a weaker basis for the claim.",
+        "suggestedCorrection": null,
+        "validationNotes": []
+      },
+      {
+        "id": "CALL-003-ai-5",
+        "source": "ai",
+        "type": "omission",
+        "severity": "minor",
+        "certainty": "uncertain",
+        "summaryExcerpt": null,
+        "turnIds": [
+          "T22",
+          "T23"
+        ],
+        "rule": "Promises to Pay: record the commitment, including where no payment was agreed.",
+        "explanation": "The customer asked whether any payment had been agreed and the agent confirmed none had, but the summary does not say so, which a colleague may want to know.",
+        "suggestedCorrection": "No payment was agreed during the call.",
+        "validationNotes": []
+      }
+    ],
+    "checks": [
+      {
+        "category": "DPA",
+        "note": "Name, date of birth and address/postcode were verified before discussing the account.",
+        "turnIds": [
+          "T03",
+          "T04",
+          "T05"
+        ]
+      },
+      {
+        "category": "Contact direction",
+        "note": "Customer called in about a letter, so the call is inbound.",
+        "turnIds": [
+          "T01",
+          "T02"
+        ]
+      },
+      {
+        "category": "Arrears discussed",
+        "note": "Missed instalments and arrears were discussed.",
+        "turnIds": [
+          "T05"
+        ]
+      },
+      {
+        "category": "Forbearance",
+        "note": "Thirty-day hold on collection contact was offered and applied.",
+        "turnIds": [
+          "T17",
+          "T21"
+        ]
+      },
+      {
+        "category": "External advice",
+        "note": "Citizens Advice referral was made.",
+        "turnIds": [
+          "T19"
+        ]
+      },
+      {
+        "category": "Customer signposted",
+        "note": "Agent directed the customer to the company website support page.",
+        "turnIds": [
+          "T19"
+        ]
+      },
+      {
+        "category": "I&E deferral",
+        "note": "I&E was deferred until the customer knows their rota, not refused.",
+        "turnIds": [
+          "T12",
+          "T13"
+        ]
+      },
+      {
+        "category": "Next steps",
+        "note": "Next call on 4 November to review and complete I&E is correctly stated.",
+        "turnIds": [
+          "T21"
+        ]
+      },
+      {
+        "category": "Hold hallucination",
+        "note": "Unclear speaker line during hold was correctly ignored.",
+        "turnIds": [
+          "T15"
+        ]
+      }
+    ],
+    "model": "claude-haiku-5-5",
+    "generatedAt": "2026-11-13T07:57:33.538Z"
+  },
+  {
+    "callId": "CALL-004",
+    "suggestedVerdict": "minor_issues",
+    "rationale": "The summary is broadly accurate. DPA was completed (T03-T05), the inbound direction is correct (T01-T02), arrears were discussed without an amount, the £40 promise on 28 October via the portal matches T16-T17, no payment was taken during the call, and the next steps match T21. Three minor points remain: the summary generalises the customer's spending cuts, it labels £60 as an assessed surplus when the customer gave it as the remainder after the normal car payment, and it omits the customer's view that the normal payment is manageable but catching up is hard. None changes what a colleague would do, so the verdict is minor issues.",
+    "findings": [
+      {
+        "id": "CALL-004-ai-1",
+        "source": "ai",
+        "type": "rule_breach",
+        "severity": "minor",
+        "certainty": "definite",
+        "summaryExcerpt": "the customer had reduced other spending",
+        "turnIds": [
+          "T10"
+        ],
+        "rule": "Specificity (No Generalization): be specific about events rather than generalising the customer's situation.",
+        "explanation": "The customer specifically cancelled a couple of subscriptions, stopped paying for work parking and now takes the bus, but the summary reduces this to general 'other spending'.",
+        "suggestedCorrection": "The customer cancelled a couple of subscriptions, stopped paying for work parking and now takes the bus when her husband has the car.",
+        "validationNotes": []
+      },
+      {
+        "id": "CALL-004-ai-2",
+        "source": "ai",
+        "type": "unsupported",
+        "severity": "minor",
+        "certainty": "uncertain",
+        "summaryExcerpt": "An I&E assessment was completed with an assessed monthly surplus of £60",
+        "turnIds": [
+          "T12",
+          "T14",
+          "T15"
+        ],
+        "rule": "Affordability: the I&E outcome should reflect what was discussed; figures should not be overstated.",
+        "explanation": "The £60 was the customer's own figure for what was left after the normal car payment, and the agent only said the assessment was completed, so 'assessed surplus' slightly overstates the outcome.",
+        "suggestedCorrection": "An I&E assessment was completed using the customer's figures, with about £60 left after essential spending and the normal car payment.",
+        "validationNotes": []
+      },
+      {
+        "id": "CALL-004-ai-3",
+        "source": "ai",
+        "type": "omission",
+        "severity": "minor",
+        "certainty": "uncertain",
+        "summaryExcerpt": null,
+        "turnIds": [
+          "T10"
+        ],
+        "rule": "Customer's Situation & Ability to Pay: include any information affecting ability to pay now or in future.",
+        "explanation": "The customer said she could manage the normal payment but found catching up difficult, which is relevant context for the colleague's next contact, and the summary does not mention it.",
+        "suggestedCorrection": "The customer said she could manage the normal payment but found catching up difficult.",
+        "validationNotes": []
+      }
+    ],
+    "checks": [
+      {
+        "category": "Data Protection (DPA)",
+        "note": "Name, date of birth and address/postcode were verified, so 'DPA completed' is correct.",
+        "turnIds": [
+          "T03",
+          "T04",
+          "T05"
+        ]
+      },
+      {
+        "category": "Contact Outcome (direction)",
+        "note": "Inbound direction is correct: the agent opened with a service greeting and the customer called back.",
+        "turnIds": [
+          "T01",
+          "T02",
+          "T06"
+        ]
+      },
+      {
+        "category": "Account Status",
+        "note": "Arrears were discussed and no arrears amount was stated.",
+        "turnIds": [
+          "T07"
+        ]
+      },
+      {
+        "category": "Situational costs",
+        "note": "The £180 rent increase, which started this month, is stated as the cause of the missed instalment.",
+        "turnIds": [
+          "T08"
+        ]
+      },
+      {
+        "category": "Promises to Pay",
+        "note": "The £40 on 28 October through the portal and the unchanged Direct Debit are correct.",
+        "turnIds": [
+          "T16",
+          "T17",
+          "T20"
+        ]
+      },
+      {
+        "category": "Payment made vs not made",
+        "note": "No payment was taken during the call, and the summary correctly records none.",
+        "turnIds": [
+          "T18",
+          "T19"
+        ]
+      },
+      {
+        "category": "Understanding",
+        "note": "The agent checked the plan made sense and the customer confirmed it.",
+        "turnIds": [
+          "T19",
+          "T20"
+        ]
+      },
+      {
+        "category": "Next Steps",
+        "note": "The email confirmation and contacting the company before collection match the agent's advice.",
+        "turnIds": [
+          "T19",
+          "T21"
+        ]
+      },
+      {
+        "category": "I&E refusal",
+        "note": "The customer did not decline the I&E, so no refusal is recorded, which is correct.",
+        "turnIds": [
+          "T11",
+          "T12"
+        ]
+      }
+    ],
+    "model": "claude-haiku-5-5",
+    "generatedAt": "2026-11-13T07:57:40.167Z"
+  },
+  {
+    "callId": "CALL-005",
+    "suggestedVerdict": "acceptable",
+    "rationale": "The summary is accurate. DPA was completed (T03–T05), the outbound direction and reaching the customer are correct (T01–T02), and arrears were discussed without figures (T07). The £800 turbo cost and its effect on the instalment match T08 and T10. The declined card attempt is recorded correctly (T12–T18), with no payment made and no promise given (T19, T24). The 21 October call after 1 pm matches T20–T23. The understanding check is supported by T22–T23. No required category was missed and no rule was breached.",
+    "findings": [],
+    "checks": [
+      {
+        "category": "DPA",
+        "note": "Name, date of birth and address verified before discussing the account.",
+        "turnIds": [
+          "T03",
+          "T04",
+          "T05"
+        ]
+      },
+      {
+        "category": "Contact outcome (outbound, customer reached)",
+        "note": "Agent called and reached the account holder.",
+        "turnIds": [
+          "T01",
+          "T02"
+        ]
+      },
+      {
+        "category": "Account status (arrears discussed, no figures)",
+        "note": "Arrears raised without any amount stated.",
+        "turnIds": [
+          "T07"
+        ]
+      },
+      {
+        "category": "Situational costs",
+        "note": "Turbo repair cost of £800 and use of instalment funds recorded.",
+        "turnIds": [
+          "T08",
+          "T10"
+        ]
+      },
+      {
+        "category": "Payment attempt (declined)",
+        "note": "Card attempt recorded as declined, with no payment made.",
+        "turnIds": [
+          "T12",
+          "T13",
+          "T16",
+          "T18"
+        ]
+      },
+      {
+        "category": "No promise to pay",
+        "note": "Correctly states no payment arrangement was agreed.",
+        "turnIds": [
+          "T19",
+          "T23",
+          "T24"
+        ]
+      },
+      {
+        "category": "Understanding check",
+        "note": "Agent confirmed the plan and the customer agreed.",
+        "turnIds": [
+          "T22",
+          "T23"
+        ]
+      },
+      {
+        "category": "Next steps",
+        "note": "Bank check and call on 21 October after 1 pm are correct.",
+        "turnIds": [
+          "T20",
+          "T21",
+          "T22",
+          "T23"
+        ]
+      }
+    ],
+    "model": "claude-haiku-5-5",
+    "generatedAt": "2026-11-13T07:58:02.687Z"
+  },
+  {
+    "callId": "CALL-006",
+    "suggestedVerdict": "minor_issues",
+    "rationale": "The summary is largely accurate. DPA, inbound direction, third-party Authority to Act (limited to this call), arrears discussed without an amount, affordability and understanding checks, the £220 bank transfer promise on 30 October, and the 2 November review all match the transcript and rules. Two minor points remain: the customer's remark 'I get flustered with the dates' (T06) may be a vulnerability disclosure that the summary does not mention, and the cause of the missed instalment is simplified to a wage change when the transcript also describes Direct Debit timing and the customer's date confusion.",
+    "findings": [
+      {
+        "id": "CALL-006-ai-1",
+        "source": "ai",
+        "type": "omission",
+        "severity": "minor",
+        "certainty": "uncertain",
+        "summaryExcerpt": null,
+        "turnIds": [
+          "T06"
+        ],
+        "rule": "Vulnerability & Consent: State the vulnerability if applicable.",
+        "explanation": "The customer said they get flustered with the dates, which may be a vulnerability disclosure, but the agent did not address it and the summary says nothing about it, so a colleague would not know of it.",
+        "suggestedCorrection": "Consider adding a brief note that the customer said they get flustered with dates, with no consent to record recorded.",
+        "validationNotes": []
+      },
+      {
+        "id": "CALL-006-ai-2",
+        "source": "ai",
+        "type": "unsupported",
+        "severity": "minor",
+        "certainty": "uncertain",
+        "summaryExcerpt": "A change from weekly to monthly wages caused the missed instalment.",
+        "turnIds": [
+          "T10",
+          "T12",
+          "T13"
+        ],
+        "rule": "Specific Cause Rule: be as specific to the cause as possible without making anything up.",
+        "explanation": "The transcript gives a mix of causes: the customer got the pay dates wrong and the Direct Debit left before wages arrived, and the mother said it was mostly the Direct Debit timing. The summary's single causal attribution to the wage change is simplified.",
+        "suggestedCorrection": "Customer started a new job paid monthly rather than weekly, and misjudged the pay dates so the Direct Debit was collected before wages arrived, causing the missed instalment.",
+        "validationNotes": []
+      }
+    ],
+    "checks": [
+      {
+        "category": "Data Protection (DPA)",
+        "note": "Name, date of birth and address were verified, so DPA completed is correct.",
+        "turnIds": [
+          "T03",
+          "T04",
+          "T05"
+        ]
+      },
+      {
+        "category": "Contact Outcome – direction",
+        "note": "The agent opened with a general service greeting, so inbound is correctly inferred.",
+        "turnIds": [
+          "T01",
+          "T02"
+        ]
+      },
+      {
+        "category": "Authority to Act",
+        "note": "Mother's presence, relationship and limited Authority to Act for this call only are correctly recorded.",
+        "turnIds": [
+          "T06",
+          "T07",
+          "T08",
+          "T09",
+          "T11"
+        ]
+      },
+      {
+        "category": "Account Status – arrears",
+        "note": "Arrears were discussed and no amount is stated, as the rules require.",
+        "turnIds": [
+          "T11"
+        ]
+      },
+      {
+        "category": "Affordability and understanding",
+        "note": "Affordability was checked and the customer confirmed their understanding of the arrangement.",
+        "turnIds": [
+          "T16",
+          "T17",
+          "T21",
+          "T22"
+        ]
+      },
+      {
+        "category": "Promises to Pay",
+        "note": "The £220 bank transfer on 30 October with the account reference, and the unchanged regular schedule, are correctly recorded.",
+        "turnIds": [
+          "T15",
+          "T19",
+          "T20",
+          "T22"
+        ]
+      },
+      {
+        "category": "Next Steps",
+        "note": "Review of receipt on 2 November and contact if the transfer has not arrived are correctly stated, and 'next steps' terminology is used.",
+        "turnIds": [
+          "T23"
+        ]
+      },
+      {
+        "category": "Redaction and tone",
+        "note": "No customer, mother or agent names appear, the summary is British English and within 2–5 sentences.",
+        "turnIds": [
+          "T04",
+          "T10"
+        ]
+      }
+    ],
+    "model": "claude-haiku-5-5",
+    "generatedAt": "2026-11-13T07:57:37.780Z"
+  },
+  {
+    "callId": "CALL-007",
+    "suggestedVerdict": "minor_issues",
+    "rationale": "The summary is largely accurate. DPA was completed (T03-T05), the call was outbound from the agent (T01), arrears were discussed without figures (T07), the card payment is recorded as 'Payment made' without an amount (T15), the Direct Debit start date of 16 November is correct (T17), and the next steps match the agent's guidance (T22). One minor omission: the customer said the old account lacked funds because the money was in the new account (T12), which is a stated cause of the missed payment that the summary does not capture. This is debatable because the summary does give a cause, so it is recorded as uncertain and minor.",
+    "findings": [
+      {
+        "id": "CALL-007-ai-1",
+        "source": "ai",
+        "type": "omission",
+        "severity": "minor",
+        "certainty": "uncertain",
+        "summaryExcerpt": "A bank change was not saved after the customer lost signal, leaving the Direct Debit linked to the old account.",
+        "turnIds": [
+          "T06",
+          "T08",
+          "T12"
+        ],
+        "rule": "Customer's Situation & Ability to Pay: reason for non-payment (specific causes); any info affecting ability to pay now or in future.",
+        "explanation": "The customer said the old account did not have enough money because the funds were in the new account, which is a stated reason for the missed instalment. The summary attributes the missed payment only to the unsaved bank change.",
+        "suggestedCorrection": "Add that the old account lacked sufficient funds because the money was held in the new account, which is why the instalment was missed.",
+        "validationNotes": []
+      }
+    ],
+    "checks": [
+      {
+        "category": "Data Protection (DPA)",
+        "note": "Name, date of birth and address were verified, so 'DPA completed' is correct.",
+        "turnIds": [
+          "T03",
+          "T04",
+          "T05"
+        ]
+      },
+      {
+        "category": "Contact Outcome",
+        "note": "Agent initiated the call and reached the customer, so 'The company called and reached the customer' is correct.",
+        "turnIds": [
+          "T01",
+          "T02"
+        ]
+      },
+      {
+        "category": "Account Status",
+        "note": "Arrears were discussed and no figure was included, which meets the rule.",
+        "turnIds": [
+          "T07"
+        ]
+      },
+      {
+        "category": "Payment made",
+        "note": "Debit card payment was taken during the call and recorded without an amount.",
+        "turnIds": [
+          "T11",
+          "T15"
+        ]
+      },
+      {
+        "category": "Promises to Pay / Actions Taken",
+        "note": "New Direct Debit set up with the correct start date of 16 November.",
+        "turnIds": [
+          "T17",
+          "T20"
+        ]
+      },
+      {
+        "category": "Understanding",
+        "note": "Customer summarised the plan and the agent confirmed it, so the understanding check is recorded.",
+        "turnIds": [
+          "T23",
+          "T24"
+        ]
+      },
+      {
+        "category": "Next Steps",
+        "note": "Email confirmation check and three-working-day call-back guidance are correctly stated.",
+        "turnIds": [
+          "T21",
+          "T22"
+        ]
+      },
+      {
+        "category": "Anonymity and redaction",
+        "note": "No customer name, agent name, bank details or telephone numbers appear in the summary.",
+        "turnIds": [
+          "T04",
+          "T19"
+        ]
+      }
+    ],
+    "model": "claude-haiku-5-5",
+    "generatedAt": "2026-11-13T07:57:27.394Z"
+  },
+  {
+    "callId": "CALL-008",
+    "suggestedVerdict": "misleading",
+    "rationale": "The summary is largely accurate on DPA, call direction, the £120 portal promise on 30 October, the 2 November callback, the after-5.30 preference and the understanding check. However, it states that the agent confirmed a default notice had been issued, which appears nowhere in the transcript. A colleague could wrongly believe a default notice is on the account and act on that.",
+    "findings": [
+      {
+        "id": "CALL-008-ai-1",
+        "source": "ai",
+        "type": "unsupported",
+        "severity": "material",
+        "certainty": "definite",
+        "summaryExcerpt": "The agent confirmed a default notice had been issued",
+        "turnIds": [
+          "T07",
+          "T09",
+          "T15",
+          "T17",
+          "T23"
+        ],
+        "rule": "Consequences: explanations of default notices must reflect what was said; Specific events must not be invented.",
+        "explanation": "The transcript contains no mention of a default notice, arrears letter status beyond the missed payment, or any default being issued. The agent only discussed the missed payment and the wage date.",
+        "suggestedCorrection": "Remove the default notice statement. The customer was reminded of the missed payment and the need to contact the company if wages do not arrive as expected.",
+        "validationNotes": []
+      }
+    ],
+    "checks": [
+      {
+        "category": "DPA",
+        "note": "Name, date of birth and address/postcode were verified before the account was discussed, so 'DPA completed' is correct.",
+        "turnIds": [
+          "T03",
+          "T04",
+          "T05"
+        ]
+      },
+      {
+        "category": "Contact direction",
+        "note": "Agent opened with a general service greeting, so the inbound call is correctly recorded as the customer calling the company.",
+        "turnIds": [
+          "T01",
+          "T02"
+        ]
+      },
+      {
+        "category": "Account status",
+        "note": "Missed payment and arrears were discussed; no arrears amount is stated, as required.",
+        "turnIds": [
+          "T06",
+          "T07",
+          "T15"
+        ]
+      },
+      {
+        "category": "Customer situation",
+        "note": "Job change moving payday to the last Friday of the month is correctly described as the cause of the missed payment, without employer names.",
+        "turnIds": [
+          "T08",
+          "T09"
+        ]
+      },
+      {
+        "category": "Promise to pay",
+        "note": "£120 via the online portal on Friday 30 October is correctly recorded and confirmed by the customer.",
+        "turnIds": [
+          "T10",
+          "T12",
+          "T13",
+          "T14",
+          "T22"
+        ]
+      },
+      {
+        "category": "Understanding",
+        "note": "Agent asked the customer to confirm the payment date and next steps, and the customer repeated them back.",
+        "turnIds": [
+          "T21",
+          "T22"
+        ]
+      },
+      {
+        "category": "Next steps",
+        "note": "Callback on Monday 2 November about remaining arrears, preferably after half five, and the customer's password reset and contact-if-wages-delayed advice are correctly reflected.",
+        "turnIds": [
+          "T17",
+          "T18",
+          "T19",
+          "T23",
+          "T24"
+        ]
+      },
+      {
+        "category": "Language and format",
+        "note": "British spelling, 'next steps' terminology and five sentences are compliant; no 'further action' wording is used.",
+        "turnIds": []
+      }
+    ],
+    "model": "claude-haiku-5-5",
+    "generatedAt": "2026-11-13T07:57:23.082Z"
+  },
+  {
+    "callId": "CALL-009",
+    "suggestedVerdict": "misleading",
+    "rationale": "The summary is accurate on DPA, outbound contact, arrears, the £300 overtime loss, the attempted payment, the absence of an agreed amount, the credit file explanation and the understanding check. It is materially wrong on I&E: the customer did not refuse the assessment. When asked, they said 'Not right now' but agreed to complete it the next evening (T12), and the agent confirmed the arrangement (T13, T15). The summary's own next-steps sentence, which has the customer preparing figures for the assessment call, contradicts its 'refused' claim, and a colleague could wrongly record an I&E refusal.",
+    "findings": [
+      {
+        "id": "CALL-009-ai-1",
+        "source": "ai",
+        "type": "contradiction",
+        "severity": "material",
+        "certainty": "definite",
+        "summaryExcerpt": "The customer refused an I&E assessment scheduled for 21 October after 6 pm",
+        "turnIds": [
+          "T12",
+          "T13",
+          "T15"
+        ],
+        "rule": "I&E Refusal: State if the customer declines an Income & Expenditure (I&E) assessment; explicit or implicit refusals only.",
+        "explanation": "The customer deferred the assessment to the next evening and agreed to complete it, so no refusal occurred. Recording a refusal could lead a colleague to treat the customer as non-engaging.",
+        "suggestedCorrection": "The customer agreed to complete an I&E assessment on 21 October after 6 pm, as they wanted their bank app and bills to hand.",
+        "validationNotes": []
+      }
+    ],
+    "checks": [
+      {
+        "category": "Data Protection (DPA)",
+        "note": "Name, date of birth and address/postcode were verified before discussing the account.",
+        "turnIds": [
+          "T03",
+          "T04",
+          "T05"
+        ]
+      },
+      {
+        "category": "Contact Outcome (outbound, customer reached)",
+        "note": "Agent called and reached the account holder, correctly identified as outbound.",
+        "turnIds": [
+          "T01",
+          "T02"
+        ]
+      },
+      {
+        "category": "Account Status",
+        "note": "Arrears from the missed instalment were discussed, with no amount stated.",
+        "turnIds": [
+          "T07"
+        ]
+      },
+      {
+        "category": "Customer Situation (specific cause and income impact)",
+        "note": "Overtime cut was specified with the approximate £300 monthly loss and no employer named.",
+        "turnIds": [
+          "T08"
+        ]
+      },
+      {
+        "category": "Actions Taken (attempted payment, declined)",
+        "note": "Agent asked for a payment today and the customer declined.",
+        "turnIds": [
+          "T09",
+          "T10"
+        ]
+      },
+      {
+        "category": "Consequences (credit file)",
+        "note": "Possible credit file impact was explained and the customer's question was answered.",
+        "turnIds": [
+          "T15",
+          "T16",
+          "T17"
+        ]
+      },
+      {
+        "category": "Understanding",
+        "note": "Agent checked the customer's understanding of the next step, and the customer confirmed no amount was agreed.",
+        "turnIds": [
+          "T19",
+          "T20"
+        ]
+      },
+      {
+        "category": "Promises to Pay",
+        "note": "No payment amount was agreed, which the summary correctly reflects.",
+        "turnIds": [
+          "T20"
+        ]
+      },
+      {
+        "category": "Next Steps",
+        "note": "Customer to prepare income and expense figures for the assessment call, matching the transcript.",
+        "turnIds": [
+          "T21",
+          "T22"
+        ]
+      },
+      {
+        "category": "Anonymity and redaction",
+        "note": "No customer name, agent name or address appears in the summary.",
+        "turnIds": []
+      }
+    ],
+    "model": "claude-haiku-5-5",
+    "generatedAt": "2026-11-13T07:58:15.662Z"
+  },
+  {
+    "callId": "CALL-010",
+    "suggestedVerdict": "minor_issues",
+    "rationale": "The summary correctly records DPA via pre-call security, inbound contact, arrears discussed without figures, the £205 portal payment on 27 October, and the new Direct Debit. It omits the reason for non-payment (the husband's cancellation of the Direct Debit from the joint account during the divorce), which the rules require when discussed. The omission is minor because the arrangement and next steps remain accurate.",
+    "findings": [
+      {
+        "id": "CALL-010-ai-1",
+        "source": "ai",
+        "type": "omission",
+        "severity": "minor",
+        "certainty": "definite",
+        "summaryExcerpt": null,
+        "turnIds": [
+          "T07",
+          "T08",
+          "T10"
+        ],
+        "rule": "Customer's Situation & Ability to Pay: reason for non-payment (specific causes without entity names).",
+        "explanation": "The customer explained the missed payment was caused by a cancelled Direct Debit during a divorce, but the summary gives no reason for the missed instalment.",
+        "suggestedCorrection": "Missed instalment caused by Direct Debit cancelled from the joint account during divorce arrangements, by mistake.",
+        "validationNotes": []
+      }
+    ],
+    "checks": [
+      {
+        "category": "DPA",
+        "note": "Pre-call security (name, date of birth, address) confirmed, so 'DPA completed' is correct.",
+        "turnIds": [
+          "T03",
+          "T04",
+          "T05"
+        ]
+      },
+      {
+        "category": "Contact outcome",
+        "note": "Customer initiated the call with a query about the car finance account, correctly recorded as inbound.",
+        "turnIds": [
+          "T01",
+          "T02"
+        ]
+      },
+      {
+        "category": "Account status",
+        "note": "Missed instalment discussed; arrears correctly stated without any figure.",
+        "turnIds": [
+          "T07"
+        ]
+      },
+      {
+        "category": "Affordability",
+        "note": "Agent asked whether the payment would leave enough for essential costs; customer confirmed it would.",
+        "turnIds": [
+          "T16",
+          "T17"
+        ]
+      },
+      {
+        "category": "Understanding",
+        "note": "Customer restated the new Direct Debit and payment date, and the agent confirmed them.",
+        "turnIds": [
+          "T21",
+          "T22"
+        ]
+      },
+      {
+        "category": "Promise to pay",
+        "note": "£205 through the portal on 27 October is correctly recorded.",
+        "turnIds": [
+          "T15",
+          "T16"
+        ]
+      },
+      {
+        "category": "Actions taken",
+        "note": "New Direct Debit set up for future collections; no payment taken during the call, so no 'Payment made' is needed.",
+        "turnIds": [
+          "T14"
+        ]
+      },
+      {
+        "category": "Next steps",
+        "note": "Confirmation checks and calling back before the payment date are correctly stated without 'further action' wording.",
+        "turnIds": [
+          "T18",
+          "T20",
+          "T22"
+        ]
+      }
+    ],
+    "model": "claude-haiku-5-5",
+    "generatedAt": "2026-11-13T07:58:05.542Z"
+  },
+  {
+    "callId": "CALL-011",
+    "suggestedVerdict": "minor_issues",
+    "rationale": "The summary is largely accurate: DPA, outbound contact, arrears discussed without an amount, consent to record vulnerability, the 14-day contact hold, the explained effect of the hold, and the 3 November next step all match the transcript. Two minor issues remain: the mandated 'customer signposted' wording is missing despite the agent directing the customer to the website support page, and 'about four hundred pounds' is restated as an exact '£400'. Neither changes what a colleague would do, so the verdict is minor_issues.",
+    "findings": [
+      {
+        "id": "CALL-011-ai-1",
+        "source": "ai",
+        "type": "rule_breach",
+        "severity": "minor",
+        "certainty": "definite",
+        "summaryExcerpt": "The customer was referred to MoneyHelper",
+        "turnIds": [
+          "T15",
+          "T16"
+        ],
+        "rule": "Signposting: if the agent advises the customer to visit the company website for help or support, the summary must include the phrase 'customer signposted'.",
+        "explanation": "The agent directed the customer to the website support page for MoneyHelper details, but the summary does not use the mandated 'customer signposted' wording.",
+        "suggestedCorrection": "Customer signposted to MoneyHelper via the company website support page.",
+        "validationNotes": []
+      },
+      {
+        "id": "CALL-011-ai-2",
+        "source": "ai",
+        "type": "unsupported",
+        "severity": "minor",
+        "certainty": "definite",
+        "summaryExcerpt": "sick pay reducing monthly income by £400",
+        "turnIds": [
+          "T08"
+        ],
+        "rule": "Situational costs: specific financial values must be accurate; the summary must not overstate precision.",
+        "explanation": "The customer said sick pay was about four hundred pounds less a month, so stating an exact £400 drops the qualifier 'about'.",
+        "suggestedCorrection": "sick pay reducing monthly income by about £400",
+        "validationNotes": []
+      }
+    ],
+    "checks": [
+      {
+        "category": "DPA",
+        "note": "Name, date of birth and address were verified, so 'DPA completed' is correct.",
+        "turnIds": [
+          "T03",
+          "T04",
+          "T05"
+        ]
+      },
+      {
+        "category": "Contact outcome",
+        "note": "Outbound call from the company, and the customer was reached.",
+        "turnIds": [
+          "T01",
+          "T02"
+        ]
+      },
+      {
+        "category": "Account status",
+        "note": "Arrears were discussed and no amount was stated, as the rules require.",
+        "turnIds": [
+          "T07"
+        ]
+      },
+      {
+        "category": "Customer situation and ability to pay",
+        "note": "Broken wrist, absence from work and reduced sick pay are recorded accurately.",
+        "turnIds": [
+          "T08",
+          "T10"
+        ]
+      },
+      {
+        "category": "Vulnerability and consent",
+        "note": "Consent to record the wrist and income reduction was obtained and the mandated phrase is used.",
+        "turnIds": [
+          "T11",
+          "T12",
+          "T13"
+        ]
+      },
+      {
+        "category": "Forbearance",
+        "note": "The fourteen-day hold on collection contact is correctly described.",
+        "turnIds": [
+          "T17",
+          "T21"
+        ]
+      },
+      {
+        "category": "Understanding",
+        "note": "The agent explained that the hold does not cancel the instalment or arrears, and the customer confirmed understanding.",
+        "turnIds": [
+          "T19",
+          "T21",
+          "T22"
+        ]
+      },
+      {
+        "category": "Next steps",
+        "note": "Review call on 3 November and the customer's advice-seeking step are accurately recorded using the 'next steps' terminology.",
+        "turnIds": [
+          "T20",
+          "T21",
+          "T22"
+        ]
+      },
+      {
+        "category": "Anonymity and redaction",
+        "note": "No customer names, agent names or contact details appear in the summary.",
+        "turnIds": [
+          "T01",
+          "T04"
+        ]
+      }
+    ],
+    "model": "claude-haiku-5-5",
+    "generatedAt": "2026-11-13T07:57:48.500Z"
+  },
+  {
+    "callId": "CALL-012",
+    "suggestedVerdict": "misleading",
+    "rationale": "The summary is accurate on DPA, inbound direction, arrears (no figures), zero-hour contract cause, I&E deferral, credit file explanation, understanding check and no payment promise. However, it describes the father's Authority to Act as 'ongoing', whereas the customer expressly limited it to this call only (T08) and the agent confirmed 'for this call only' (T09). A colleague preparing for future contact could wrongly believe the father can discuss the account without re-verification, so this is a material contradiction.",
+    "findings": [
+      {
+        "id": "CALL-012-ai-1",
+        "source": "ai",
+        "type": "contradiction",
+        "severity": "material",
+        "certainty": "definite",
+        "summaryExcerpt": "whose ongoing Authority to Act was verified",
+        "turnIds": [
+          "T07",
+          "T08",
+          "T09"
+        ],
+        "rule": "Authority to Act: If a third party is present, you MUST state if Authority to Act was verified or if the agent refused to discuss details due to lack of authority.",
+        "explanation": "The customer explicitly said she did not need her father added for future calls, and the agent confirmed authority was verified for this call only, so 'ongoing' is wrong.",
+        "suggestedCorrection": "The customer called the company with their father, whose Authority to Act was verified for this call only, and arrears were discussed.",
+        "validationNotes": []
+      }
+    ],
+    "checks": [
+      {
+        "category": "DPA",
+        "note": "Name, date of birth and address were verified before the account was discussed.",
+        "turnIds": [
+          "T03",
+          "T04",
+          "T05"
+        ]
+      },
+      {
+        "category": "Contact direction",
+        "note": "Customer opened the call about their account, so inbound is correctly recorded.",
+        "turnIds": [
+          "T02"
+        ]
+      },
+      {
+        "category": "Identification of third party",
+        "note": "Father's presence and role as a third party are correctly identified.",
+        "turnIds": [
+          "T06",
+          "T10"
+        ]
+      },
+      {
+        "category": "Account status",
+        "note": "Arrears were discussed without any numerical values.",
+        "turnIds": [
+          "T11"
+        ]
+      },
+      {
+        "category": "Situational circumstances",
+        "note": "Missed payments were attributed to lack of agency shifts on a zero-hour contract, with future shifts uncertain.",
+        "turnIds": [
+          "T12",
+          "T13"
+        ]
+      },
+      {
+        "category": "I&E",
+        "note": "I&E assessment was arranged for a later date at the customer's request; no refusal occurred.",
+        "turnIds": [
+          "T14",
+          "T15",
+          "T16"
+        ]
+      },
+      {
+        "category": "Consequences",
+        "note": "Possible credit file impact for the account holder was explained.",
+        "turnIds": [
+          "T18"
+        ]
+      },
+      {
+        "category": "Understanding",
+        "note": "Agent checked the customer's understanding of what was agreed and the customer confirmed it.",
+        "turnIds": [
+          "T22",
+          "T23",
+          "T24"
+        ]
+      },
+      {
+        "category": "Promises to pay",
+        "note": "Correctly records that no payment promise was made.",
+        "turnIds": [
+          "T23"
+        ]
+      },
+      {
+        "category": "Next steps",
+        "note": "Assessment on 23 October after 3 pm and preparation of figures are correctly stated.",
+        "turnIds": [
+          "T20",
+          "T21",
+          "T22",
+          "T24"
+        ]
+      }
+    ],
+    "model": "claude-haiku-5-5",
+    "generatedAt": "2026-11-13T07:57:24.364Z"
+  },
+  {
+    "callId": "CALL-013",
+    "suggestedVerdict": "misleading",
+    "rationale": "The summary is largely accurate on DPA, direction of contact, arrears, the £60 promise (amount, date, method), affordability checks and next steps. However, it records 'Payment made', but no payment was taken during the call; the customer agreed to pay £60 on Friday. A colleague could wrongly believe a payment has already been received.",
+    "findings": [
+      {
+        "id": "CALL-013-ai-1",
+        "source": "ai",
+        "type": "contradiction",
+        "severity": "material",
+        "certainty": "definite",
+        "summaryExcerpt": "Payment made;",
+        "turnIds": [
+          "T22",
+          "T23"
+        ],
+        "rule": "Immediate Payments: 'Payment made' applies only to payments taken during the call; Actions Taken should record 'Payment made' only if successful.",
+        "explanation": "The agent confirmed that no payment was taken during the call (T23), and the customer said 'I haven't paid anything today' and that the £60 would be paid on Friday (T22). Stating 'Payment made' wrongly implies money has been received.",
+        "suggestedCorrection": "Customer agreed to pay £60 by bank transfer on 23 October using their account reference; no payment was taken during the call.",
+        "validationNotes": []
+      }
+    ],
+    "checks": [
+      {
+        "category": "DPA",
+        "note": "Name, date of birth and address were verified before the account was discussed, so 'DPA completed' is correct.",
+        "turnIds": [
+          "T03",
+          "T04",
+          "T05"
+        ]
+      },
+      {
+        "category": "Contact outcome",
+        "note": "Outbound call from the agent, reaching the named customer, is correctly recorded.",
+        "turnIds": [
+          "T01",
+          "T02"
+        ]
+      },
+      {
+        "category": "Account status",
+        "note": "Arrears were discussed without any figure being stated.",
+        "turnIds": [
+          "T07"
+        ]
+      },
+      {
+        "category": "Customer situation",
+        "note": "The washing machine replacement cost of £340 and the use of car payment funds are correctly summarised as the cause.",
+        "turnIds": [
+          "T08"
+        ]
+      },
+      {
+        "category": "Affordability and understanding",
+        "note": "The agent asked what was manageable after essentials and checked the arrangement was clear; both are reflected.",
+        "turnIds": [
+          "T13",
+          "T14",
+          "T18",
+          "T23"
+        ]
+      },
+      {
+        "category": "Promise to pay",
+        "note": "The £60 amount, 23 October date, bank transfer method and account reference are correctly recorded.",
+        "turnIds": [
+          "T14",
+          "T15",
+          "T16",
+          "T22"
+        ]
+      },
+      {
+        "category": "Next steps",
+        "note": "The 27 October call after 10 am and the retention of the transfer confirmation are correctly recorded, using 'next steps'.",
+        "turnIds": [
+          "T19",
+          "T20",
+          "T21"
+        ]
+      },
+      {
+        "category": "Anonymity and redaction",
+        "note": "No customer name, date of birth, address or account identifiers appear in the summary.",
+        "turnIds": [
+          "T04"
+        ]
+      }
+    ],
+    "model": "claude-haiku-5-5",
+    "generatedAt": "2026-11-13T07:58:03.441Z"
+  },
+  {
+    "callId": "CALL-014",
+    "suggestedVerdict": "minor_issues",
+    "rationale": "The summary is largely accurate. DPA is correctly recorded as not stated because only name and postcode were verified (T03, T04), and inbound contact, arrears without amounts, the absence of a payment promise and the next call date are all handled correctly. The main problems are that it names the employer, which the rules require to be redacted, and that it omits the expected change in travel costs, which affects future ability to pay.",
+    "findings": [
+      {
+        "id": "CALL-014-ai-1",
+        "source": "ai",
+        "type": "rule_breach",
+        "severity": "minor",
+        "certainty": "definite",
+        "summaryExcerpt": "from Cedar Lane Distribution",
+        "turnIds": [
+          "T08"
+        ],
+        "rule": "Privacy (Entity Redaction): remove specific entity names such as employers.",
+        "explanation": "The customer's employer is named in the summary, although the rules require entity names to be removed. The job change can be described without naming the company.",
+        "suggestedCorrection": "Replace the employer name with a generic description, for example 'from the new employer'.",
+        "validationNotes": []
+      },
+      {
+        "id": "CALL-014-ai-2",
+        "source": "ai",
+        "type": "omission",
+        "severity": "minor",
+        "certainty": "uncertain",
+        "summaryExcerpt": null,
+        "turnIds": [
+          "T18"
+        ],
+        "rule": "Customer's Situation & Ability to Pay: include any info affecting ability to pay now or in future.",
+        "explanation": "The customer said travel costs will change because the new depot is further away, which may affect future affordability and the I&E assessment. The summary does not mention this, though the detail is not essential to the next step.",
+        "suggestedCorrection": "Add that the customer expects travel costs to change because the new depot is further away, and that the amount is not yet known.",
+        "validationNotes": []
+      }
+    ],
+    "checks": [
+      {
+        "category": "Data Protection (DPA)",
+        "note": "Correctly states no DPA with agent, as only name and postcode were verified.",
+        "turnIds": [
+          "T03",
+          "T04"
+        ]
+      },
+      {
+        "category": "Contact Outcome",
+        "note": "Correctly records that the customer called the company and was reached.",
+        "turnIds": [
+          "T01",
+          "T02"
+        ]
+      },
+      {
+        "category": "Account Status",
+        "note": "Correctly notes that arrears were discussed without stating any amount.",
+        "turnIds": [
+          "T07"
+        ]
+      },
+      {
+        "category": "Promises to Pay",
+        "note": "Correctly records that no payment amount was committed, as the customer's £80 estimate was not agreed.",
+        "turnIds": [
+          "T10",
+          "T12",
+          "T13"
+        ]
+      },
+      {
+        "category": "Affordability / I&E",
+        "note": "Correctly records that an I&E assessment was planned and the customer agreed to prepare figures.",
+        "turnIds": [
+          "T15",
+          "T16",
+          "T18"
+        ]
+      },
+      {
+        "category": "Understanding",
+        "note": "Correctly records that the agent checked the customer's understanding of the plan.",
+        "turnIds": [
+          "T23",
+          "T24",
+          "T25"
+        ]
+      },
+      {
+        "category": "Next Steps",
+        "note": "Correctly gives the 28 October call and the purpose of the call, without using 'further action'.",
+        "turnIds": [
+          "T13",
+          "T14",
+          "T24"
+        ]
+      }
+    ],
+    "model": "claude-haiku-5-5",
+    "generatedAt": "2026-11-13T07:57:53.898Z"
+  },
+  {
+    "callId": "CALL-015",
+    "suggestedVerdict": "misleading",
+    "rationale": "The summary is accurate on DPA, outbound direction, the £250 income loss, the I&E arrangement, the understanding check and the absence of any agreed payment. It omits the explicit risk-of-further-action warning the agent gave twice, which the rules require and a colleague would need. Two minor wording points are also noted.",
+    "findings": [
+      {
+        "id": "CALL-015-ai-1",
+        "source": "ai",
+        "type": "omission",
+        "severity": "material",
+        "certainty": "definite",
+        "summaryExcerpt": null,
+        "turnIds": [
+          "T13",
+          "T15"
+        ],
+        "rule": "Risk of Further Action: the summary must state if the customer was explicitly warned that the account is at risk of further action; section 6 requires warnings regarding risk of further action to be noted.",
+        "explanation": "The agent explicitly warned the customer that the account is at risk of further action if the arrears remain unresolved, but the summary does not mention this warning.",
+        "suggestedCorrection": "Add that the agent warned the customer the account is at risk of further action if the arrears remain unresolved.",
+        "validationNotes": []
+      },
+      {
+        "id": "CALL-015-ai-2",
+        "source": "ai",
+        "type": "omission",
+        "severity": "minor",
+        "certainty": "uncertain",
+        "summaryExcerpt": "Loss of an evening cleaning job reduced monthly income by £250",
+        "turnIds": [
+          "T08"
+        ],
+        "rule": "Specificity: where reasons for non-payment are mentioned, be as specific to the cause as possible.",
+        "explanation": "The customer said the office shut and the employer did not relocate them, which is the specific cause of the lost income, but the summary only says the job was lost.",
+        "suggestedCorrection": "Loss of an evening cleaning job after the office shut, with no relocation offered, reduced monthly income by £250.",
+        "validationNotes": []
+      },
+      {
+        "id": "CALL-015-ai-3",
+        "source": "ai",
+        "type": "unsupported",
+        "severity": "minor",
+        "certainty": "uncertain",
+        "summaryExcerpt": "for the company’s call on 22 October after 6 pm",
+        "turnIds": [
+          "T13",
+          "T21"
+        ],
+        "rule": "Next steps should reflect what was agreed; overstated certainty about timing should be avoided.",
+        "explanation": "The agent said a call could be requested for 22 October after six but explicitly stated an exact call time could not be promised, which the summary does not reflect.",
+        "suggestedCorrection": "The company will request a call on 22 October after 6 pm, but an exact time cannot be promised.",
+        "validationNotes": []
+      }
+    ],
+    "checks": [
+      {
+        "category": "Data Protection (DPA)",
+        "note": "Name, date of birth and address were verified and security confirmed.",
+        "turnIds": [
+          "T03",
+          "T04",
+          "T05"
+        ]
+      },
+      {
+        "category": "Contact Outcome",
+        "note": "Outbound call from the company, and the customer was reached.",
+        "turnIds": [
+          "T01",
+          "T02"
+        ]
+      },
+      {
+        "category": "Account Status",
+        "note": "Arrears from two missed instalments were discussed; no figures were stated.",
+        "turnIds": [
+          "T06",
+          "T07"
+        ]
+      },
+      {
+        "category": "Customer's Situation",
+        "note": "Loss of the evening cleaning job and £250 monthly income reduction were correctly recorded.",
+        "turnIds": [
+          "T08"
+        ]
+      },
+      {
+        "category": "Affordability / I&E",
+        "note": "The I&E assessment was arranged for the customer's preferred time; no refusal was made.",
+        "turnIds": [
+          "T11",
+          "T12",
+          "T13"
+        ]
+      },
+      {
+        "category": "Understanding",
+        "note": "Agent checked the customer understood that the assessment does not clear the missed payments.",
+        "turnIds": [
+          "T17",
+          "T18"
+        ]
+      },
+      {
+        "category": "Promises to Pay",
+        "note": "Correctly recorded that no payment amount was agreed.",
+        "turnIds": [
+          "T19"
+        ]
+      },
+      {
+        "category": "Next Steps",
+        "note": "The assessment call on 22 October after six was recorded and the customer's preparation tasks were noted.",
+        "turnIds": [
+          "T13",
+          "T18",
+          "T23"
+        ]
+      }
+    ],
+    "model": "claude-haiku-5-5",
+    "generatedAt": "2026-11-13T07:57:51.061Z"
+  },
+  {
+    "callId": "CALL-016",
+    "suggestedVerdict": "minor_issues",
+    "rationale": "The summary is largely accurate on DPA, inbound contact, arrears, the cause of the missed instalment, the card payment and the retained Direct Debit. It breaches the rule against stating payment amounts taken during the call, and it attributes an understanding check to the agent that the transcript only partly supports. Neither issue changes what a colleague would do, so the verdict is minor_issues.",
+    "findings": [
+      {
+        "id": "CALL-016-ai-1",
+        "source": "ai",
+        "type": "rule_breach",
+        "severity": "minor",
+        "certainty": "definite",
+        "summaryExcerpt": "Payment of £230 made",
+        "turnIds": [
+          "T10",
+          "T14"
+        ],
+        "rule": "Immediate Payments: NEVER include amounts for payments taken during the call. Use the phrase \"Payment made.\"",
+        "explanation": "The card payment taken during the call is stated with its amount, which the rules prohibit. The payment itself and its success are correctly recorded.",
+        "suggestedCorrection": "Payment made.",
+        "validationNotes": []
+      },
+      {
+        "id": "CALL-016-ai-2",
+        "source": "ai",
+        "type": "unsupported",
+        "severity": "minor",
+        "certainty": "uncertain",
+        "summaryExcerpt": "The agent checked the customer’s understanding;",
+        "turnIds": [
+          "T21",
+          "T22"
+        ],
+        "rule": "Understanding: Checks that the customer understood the advice/plan.",
+        "explanation": "The customer asked whether they had it right and the agent confirmed it, but the agent did not independently probe understanding, so attributing an understanding check to the agent is arguable.",
+        "suggestedCorrection": "The customer summarised the plan and the agent confirmed it was correct.",
+        "validationNotes": []
+      }
+    ],
+    "checks": [
+      {
+        "category": "DPA",
+        "note": "Name, date of birth and address/postcode verified before the account was discussed.",
+        "turnIds": [
+          "T03",
+          "T04",
+          "T05"
+        ]
+      },
+      {
+        "category": "Contact Outcome",
+        "note": "Inbound call: the customer opened with a query after the agent's general greeting.",
+        "turnIds": [
+          "T01",
+          "T02"
+        ]
+      },
+      {
+        "category": "Account Status",
+        "note": "Arrears from the returned instalment were discussed, with no figure stated.",
+        "turnIds": [
+          "T07"
+        ]
+      },
+      {
+        "category": "Customer Situation",
+        "note": "Cause was a misunderstanding of pending versus available balance, with funds later moved from savings.",
+        "turnIds": [
+          "T08"
+        ]
+      },
+      {
+        "category": "Actions Taken",
+        "note": "Card payment taken and confirmed as successful.",
+        "turnIds": [
+          "T14"
+        ]
+      },
+      {
+        "category": "Next Steps",
+        "note": "Existing Direct Debit remains active, next collection 10 November; payment confirmation to be retained and funds ensured.",
+        "turnIds": [
+          "T16",
+          "T20",
+          "T22"
+        ]
+      }
+    ],
+    "model": "claude-haiku-5-5",
+    "generatedAt": "2026-11-13T07:57:39.198Z"
+  },
+  {
+    "callId": "CALL-017",
+    "suggestedVerdict": "misleading",
+    "rationale": "The summary correctly records DPA, outbound direction, arrears discussion, consent, the Citizens Advice referral, the understanding check, the 3 November review and the absence of a payment promise. However, it states a thirty-day hold when the agent applied a fourteen-day hold, which would mislead a colleague about when collection contact resumes. It also omits the bereavement and frozen joint account, the specific hardship, and does not state the vulnerability that consent was obtained to record.",
+    "findings": [
+      {
+        "id": "CALL-017-ai-1",
+        "source": "ai",
+        "type": "contradiction",
+        "severity": "material",
+        "certainty": "definite",
+        "summaryExcerpt": "A thirty-day hold on collection contact was applied",
+        "turnIds": [
+          "T13",
+          "T19"
+        ],
+        "rule": "Forbearance: hold length must be accurate; a wrong hold length changes when colleagues can next contact the customer.",
+        "explanation": "The agent proposed and applied a fourteen-day contact hold, not a thirty-day hold.",
+        "suggestedCorrection": "A fourteen-day hold on collection contact was applied; the company will call on 3 November to review fund access and affordability.",
+        "validationNotes": []
+      },
+      {
+        "id": "CALL-017-ai-2",
+        "source": "ai",
+        "type": "omission",
+        "severity": "material",
+        "certainty": "definite",
+        "summaryExcerpt": null,
+        "turnIds": [
+          "T06",
+          "T08",
+          "T10"
+        ],
+        "rule": "Customer's Situation & Ability to Pay: include specific details of any severe hardship or crisis; Specific Cause Rule.",
+        "explanation": "The summary omits that the customer's mother died, and that the bank has frozen the joint account used for car payments while it processes the bereavement paperwork, with no access date given.",
+        "suggestedCorrection": "Customer's mother died last month; the bank has frozen the joint account the customer used for car payments while paperwork is processed, and no access date has been given.",
+        "validationNotes": []
+      },
+      {
+        "id": "CALL-017-ai-3",
+        "source": "ai",
+        "type": "omission",
+        "severity": "material",
+        "certainty": "definite",
+        "summaryExcerpt": "Consent gained to record vulnerability.",
+        "turnIds": [
+          "T11",
+          "T12"
+        ],
+        "rule": "Vulnerability & Consent: state the vulnerability, then state consent where applicable.",
+        "explanation": "The summary records consent but does not state the vulnerability the customer agreed to have recorded, namely the bereavement and frozen account.",
+        "suggestedCorrection": "Vulnerability: bereavement and frozen joint bank account. Consent gained to record vulnerability.",
+        "validationNotes": []
+      }
+    ],
+    "checks": [
+      {
+        "category": "DPA",
+        "note": "Name, date of birth and address were verified before the discussion.",
+        "turnIds": [
+          "T03",
+          "T04",
+          "T05"
+        ]
+      },
+      {
+        "category": "Contact Outcome",
+        "note": "Outbound call from the company; customer identity confirmed and reached.",
+        "turnIds": [
+          "T01",
+          "T02"
+        ]
+      },
+      {
+        "category": "Account Status",
+        "note": "Arrears were discussed without stating any amount.",
+        "turnIds": [
+          "T07",
+          "T15"
+        ]
+      },
+      {
+        "category": "Consent",
+        "note": "Customer agreed to the recording of the bereavement and frozen account.",
+        "turnIds": [
+          "T11",
+          "T12"
+        ]
+      },
+      {
+        "category": "External Advice",
+        "note": "Citizens Advice referral offered and accepted.",
+        "turnIds": [
+          "T17",
+          "T18"
+        ]
+      },
+      {
+        "category": "Understanding",
+        "note": "Agent checked understanding; customer confirmed the hold pauses calls but does not cancel the debt.",
+        "turnIds": [
+          "T23",
+          "T24"
+        ]
+      },
+      {
+        "category": "Promises to Pay",
+        "note": "No payment commitment was made; correctly stated.",
+        "turnIds": [
+          "T20",
+          "T21"
+        ]
+      },
+      {
+        "category": "Next Steps",
+        "note": "Review call on 3 November correctly recorded.",
+        "turnIds": [
+          "T19"
+        ]
+      }
+    ],
+    "model": "claude-haiku-5-5",
+    "generatedAt": "2026-11-13T07:57:41.095Z"
+  },
+  {
+    "callId": "CALL-018",
+    "suggestedVerdict": "misleading",
+    "rationale": "DPA is correctly recorded, the inbound direction and the £75 portal promise on 26 October are accurate, and the 27 October call-back is correct. However, the summary says Authority to Act was verified for the partner, but the customer declined to authorise him (T08) and the agent confirmed no Authority to Act had been granted (T22). The summary also omits the customer's declined I&E assessment (T14-T16), which the rules require to be stated and which is material. The hours reduction is also generalised to 'reduced working hours' rather than the specific five-to-four-day change.",
+    "findings": [
+      {
+        "id": "CALL-018-ai-1",
+        "source": "ai",
+        "type": "contradiction",
+        "severity": "material",
+        "certainty": "definite",
+        "summaryExcerpt": "Authority to Act was verified for the partner",
+        "turnIds": [
+          "T07",
+          "T08",
+          "T10",
+          "T22"
+        ],
+        "rule": "Authority to Act: if a third party is present, state whether Authority to Act was verified or whether the agent refused to discuss details due to lack of authority.",
+        "explanation": "The customer refused to authorise her partner to discuss account details, and the agent confirmed no Authority to Act had been granted. The summary states the opposite, so a colleague could wrongly believe the partner may discuss the account.",
+        "suggestedCorrection": "The customer's partner was present, but no Authority to Act was granted; the agent declined to discuss account details with him.",
+        "validationNotes": []
+      },
+      {
+        "id": "CALL-018-ai-2",
+        "source": "ai",
+        "type": "omission",
+        "severity": "material",
+        "certainty": "definite",
+        "summaryExcerpt": null,
+        "turnIds": [
+          "T14",
+          "T15",
+          "T16"
+        ],
+        "rule": "I&E Refusal: state if the customer declines an Income & Expenditure assessment.",
+        "explanation": "The agent offered an I&E assessment and the customer explicitly declined it, but the summary does not record this refusal.",
+        "suggestedCorrection": "Customer declined an income and expenditure assessment.",
+        "validationNotes": []
+      },
+      {
+        "id": "CALL-018-ai-3",
+        "source": "ai",
+        "type": "rule_breach",
+        "severity": "minor",
+        "certainty": "definite",
+        "summaryExcerpt": "Reduced working hours lowered monthly income by £220.",
+        "turnIds": [
+          "T13"
+        ],
+        "rule": "Specificity (No Generalization) and Specific Cause Rule.",
+        "explanation": "The transcript specifies that hours were reduced from five days to four, which the summary generalises to 'reduced working hours'. The temporary nature with no end date is also omitted, though this is less material.",
+        "suggestedCorrection": "Customer's hours were reduced from five days to four, lowering monthly income by £220, with no end date given.",
+        "validationNotes": []
+      }
+    ],
+    "checks": [
+      {
+        "category": "DPA",
+        "note": "Name, date of birth and address were verified, so DPA completed is correct.",
+        "turnIds": [
+          "T03",
+          "T04",
+          "T05"
+        ]
+      },
+      {
+        "category": "Contact Outcome direction",
+        "note": "Customer called the company and was reached; inbound direction is correct.",
+        "turnIds": [
+          "T01",
+          "T02"
+        ]
+      },
+      {
+        "category": "Account Status",
+        "note": "Arrears were discussed without stating an amount.",
+        "turnIds": [
+          "T12"
+        ]
+      },
+      {
+        "category": "Promises to Pay",
+        "note": "Amount £75, date 26 October and portal method are correctly recorded.",
+        "turnIds": [
+          "T17",
+          "T18",
+          "T21"
+        ]
+      },
+      {
+        "category": "Understanding",
+        "note": "Agent checked understanding and the customer confirmed the amount and dates.",
+        "turnIds": [
+          "T20",
+          "T21"
+        ]
+      },
+      {
+        "category": "Next Steps",
+        "note": "Call-back on 27 October to review the payment and remainder is correct.",
+        "turnIds": [
+          "T19",
+          "T20",
+          "T25"
+        ]
+      }
+    ],
+    "model": "claude-haiku-5-5",
+    "generatedAt": "2026-11-13T07:58:07.908Z"
+  },
+  {
+    "callId": "CALL-019",
+    "suggestedVerdict": "misleading",
+    "rationale": "The summary gets the DPA, arrears, income impact, I&E arrangement, StepChange referral, hold, and no-payment outcome right, but it has two material problems. It states the customer called the company when the agent opened the call as outbound, and it converts 'after two' into a specific '2 pm' time that a colleague would rely on. It also omits the mandated vulnerability consent wording even though the customer agreed to the note being recorded.",
+    "findings": [
+      {
+        "id": "CALL-019-ai-1",
+        "source": "ai",
+        "type": "contradiction",
+        "severity": "material",
+        "certainty": "definite",
+        "summaryExcerpt": "The customer called the company",
+        "turnIds": [
+          "T01",
+          "T02",
+          "T07"
+        ],
+        "rule": "Contact Outcome: state 'The customer called the company' or 'The company called the customer' based on direction inference.",
+        "explanation": "The agent opened by asking for Neil Stone and calling from vehicle finance collections, so the company called the customer, not the reverse.",
+        "suggestedCorrection": "The company called the customer and the customer was reached.",
+        "validationNotes": []
+      },
+      {
+        "id": "CALL-019-ai-2",
+        "source": "ai",
+        "type": "unsupported",
+        "severity": "material",
+        "certainty": "definite",
+        "summaryExcerpt": "take the company’s call on 23 October at 2 pm",
+        "turnIds": [
+          "T15"
+        ],
+        "rule": "Future plans must reflect the transcript; invented precision is unsupported.",
+        "explanation": "The agent said the call would be on 23 October after two, not at 2 pm, so the specific time is invented and could mislead the colleague who schedules the contact.",
+        "suggestedCorrection": "The company will call the customer on 23 October after 2 pm to complete the I&E assessment.",
+        "validationNotes": []
+      },
+      {
+        "id": "CALL-019-ai-3",
+        "source": "ai",
+        "type": "rule_breach",
+        "severity": "material",
+        "certainty": "definite",
+        "summaryExcerpt": null,
+        "turnIds": [
+          "T09",
+          "T10",
+          "T11"
+        ],
+        "rule": "Vulnerability & Consent: state 'Consent gained to record vulnerability' if applicable.",
+        "explanation": "The agent asked to note the depression and reduced pay, and the customer agreed, but the summary omits the mandated consent statement, so colleagues cannot see that consent was given.",
+        "suggestedCorrection": "Add: Consent gained to record vulnerability.",
+        "validationNotes": []
+      }
+    ],
+    "checks": [
+      {
+        "category": "DPA",
+        "note": "Name, date of birth and address were verified before the account was discussed.",
+        "turnIds": [
+          "T03",
+          "T04",
+          "T05"
+        ]
+      },
+      {
+        "category": "Account Status",
+        "note": "Missed instalment and arrears were discussed, with no amount stated.",
+        "turnIds": [
+          "T07"
+        ]
+      },
+      {
+        "category": "Customer Situation and Ability to Pay",
+        "note": "Depression and approximately £500 monthly income reduction after full pay ended are correctly reported.",
+        "turnIds": [
+          "T08",
+          "T12"
+        ]
+      },
+      {
+        "category": "Vulnerability",
+        "note": "Depression was disclosed and reported without appointment detail, as the customer requested.",
+        "turnIds": [
+          "T08",
+          "T10",
+          "T11"
+        ]
+      },
+      {
+        "category": "I&E",
+        "note": "I&E assessment was arranged for the requested Friday slot.",
+        "turnIds": [
+          "T13",
+          "T14",
+          "T15",
+          "T16"
+        ]
+      },
+      {
+        "category": "External Advice",
+        "note": "StepChange referral is correctly recorded.",
+        "turnIds": [
+          "T17"
+        ]
+      },
+      {
+        "category": "Signposting",
+        "note": "Customer signposted to the company website is correctly recorded.",
+        "turnIds": [
+          "T17",
+          "T18"
+        ]
+      },
+      {
+        "category": "Forbearance",
+        "note": "Seven-day hold on collection contact is correctly recorded.",
+        "turnIds": [
+          "T19"
+        ]
+      },
+      {
+        "category": "Consequences",
+        "note": "Agent explained that the hold does not write off arrears or guarantee no credit file impact.",
+        "turnIds": [
+          "T21"
+        ]
+      },
+      {
+        "category": "Promises to Pay",
+        "note": "Summary correctly states no payment was agreed.",
+        "turnIds": [
+          "T22"
+        ]
+      },
+      {
+        "category": "Risk of Further Action",
+        "note": "No explicit risk of further action warning was given, so its absence is correct.",
+        "turnIds": [
+          "T19",
+          "T21",
+          "T22"
+        ]
+      }
+    ],
+    "model": "claude-haiku-5-5",
+    "generatedAt": "2026-11-13T07:57:28.674Z"
+  },
+  {
+    "callId": "CALL-020",
+    "suggestedVerdict": "misleading",
+    "rationale": "The summary correctly records DPA, inbound contact, the declined I&E, and the £50 payment without an amount. However, it wrongly records that the customer agreed to pay £80 on 23 October, when the customer explicitly declined to have that treated as a promise. It also omits the agent's explicit risk of further action warning, which the rules require. The childcare cost of £210 is also left out, which is a minor rule breach.",
+    "findings": [
+      {
+        "id": "CALL-020-ai-1",
+        "source": "ai",
+        "type": "contradiction",
+        "severity": "material",
+        "certainty": "definite",
+        "summaryExcerpt": "the customer agreed to pay £80 on 23 October.",
+        "turnIds": [
+          "T16",
+          "T17",
+          "T22"
+        ],
+        "rule": "Promises to Pay: include exact commitments only; the customer asked for the £80 not to be recorded as agreed and said 'I haven't promised eighty'.",
+        "explanation": "The customer expressly refused to commit to £80 and the agent agreed not to record it, so a colleague would wrongly chase a promise that does not exist. The 23 October date relates only to a call to review affordability.",
+        "suggestedCorrection": "No promise to pay was made; the customer will call on 23 October after checking wages to review an affordable plan.",
+        "validationNotes": []
+      },
+      {
+        "id": "CALL-020-ai-2",
+        "source": "ai",
+        "type": "omission",
+        "severity": "material",
+        "certainty": "definite",
+        "summaryExcerpt": null,
+        "turnIds": [
+          "T19",
+          "T20"
+        ],
+        "rule": "Risk of Further Action: the summary must state if the customer was explicitly warned that the account is at risk of further action.",
+        "explanation": "The agent explicitly warned that the account remains at risk of further action, but the summary only says that understanding was checked and omits this required warning.",
+        "suggestedCorrection": "The customer was warned that the account remains at risk of further action.",
+        "validationNotes": []
+      },
+      {
+        "id": "CALL-020-ai-3",
+        "source": "ai",
+        "type": "rule_breach",
+        "severity": "minor",
+        "certainty": "uncertain",
+        "summaryExcerpt": "emergency childcare during a three-day school closure caused a shortfall",
+        "turnIds": [
+          "T10",
+          "T12"
+        ],
+        "rule": "Situational Costs: specific financial values affecting ability to pay must be included.",
+        "explanation": "The £210 emergency childcare cost is a specific factor affecting ability to pay and should be stated, but the summary omits the amount.",
+        "suggestedCorrection": "Customer reported £210 of emergency childcare costs during a three-day school closure, which caused a shortfall this month.",
+        "validationNotes": []
+      }
+    ],
+    "checks": [
+      {
+        "category": "Data Protection (DPA)",
+        "note": "Name, date of birth and address were verified, so DPA completed is correct.",
+        "turnIds": [
+          "T03",
+          "T04",
+          "T05"
+        ]
+      },
+      {
+        "category": "Contact direction",
+        "note": "Customer called in with a query, so the inbound direction is correct.",
+        "turnIds": [
+          "T02"
+        ]
+      },
+      {
+        "category": "I&E refusal",
+        "note": "Customer declined an income and expenditure assessment today, correctly recorded.",
+        "turnIds": [
+          "T13",
+          "T14"
+        ]
+      },
+      {
+        "category": "Payment made without amount",
+        "note": "Successful £50 payment recorded as Payment made with no amount, in line with the rules.",
+        "turnIds": [
+          "T19"
+        ]
+      },
+      {
+        "category": "Arrears figures",
+        "note": "No arrears or balance figures are stated, which complies with the rules.",
+        "turnIds": [
+          "T07",
+          "T10"
+        ]
+      },
+      {
+        "category": "Understanding",
+        "note": "Customer's understanding of the difference between the payment and the plan was checked.",
+        "turnIds": [
+          "T20",
+          "T22",
+          "T23"
+        ]
+      },
+      {
+        "category": "Anonymity",
+        "note": "No customer names, agent names or telephone numbers appear in the summary.",
+        "turnIds": [
+          "T04"
+        ]
+      }
+    ],
+    "model": "claude-haiku-5-5",
+    "generatedAt": "2026-11-13T07:57:56.515Z"
+  }
+]

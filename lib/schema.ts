@@ -77,13 +77,25 @@ export const callAnalysisSchema = z.object({
 export type CallAnalysis = z.infer<typeof callAnalysisSchema>;
 export const analysisFileSchema = z.array(callAnalysisSchema);
 
-/** What the model is asked to return, before IDs and validation are added. */
-export const llmFindingSchema = findingSchema.omit({ id: true, source: true, validationNotes: true });
+/**
+ * What the model is asked to return. Kept free of regex/default constraints so it converts cleanly
+ * to a structured-output JSON schema; turn IDs and excerpts are validated afterwards in code.
+ */
+export const llmFindingSchema = z.object({
+  type: findingTypeSchema,
+  severity: severitySchema,
+  certainty: certaintySchema,
+  summaryExcerpt: z.string().nullable(),
+  turnIds: z.array(z.string()),
+  rule: z.string(),
+  explanation: z.string(),
+  suggestedCorrection: z.string().nullable(),
+});
 export const llmOutputSchema = z.object({
-  suggestedVerdict: verdictSchema,
   rationale: z.string(),
+  suggestedVerdict: verdictSchema,
   findings: z.array(llmFindingSchema),
-  checks: z.array(checkSchema),
+  checks: z.array(z.object({ category: z.string(), note: z.string(), turnIds: z.array(z.string()) })),
 });
 export type LlmOutput = z.infer<typeof llmOutputSchema>;
 
