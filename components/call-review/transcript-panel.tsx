@@ -5,21 +5,12 @@ import { cn } from "@/lib/utils";
 export type HighlightTone = Severity | "ok" | null;
 
 const TONE_CLASS: Record<Severity | "ok", { evidence: string; focused: string }> = {
-  material: {
-    evidence: "border-destructive/60 bg-destructive/10",
-    focused: "border-destructive bg-destructive/20 ring-2 ring-destructive/50",
-  },
-  minor: {
-    evidence: "border-warning/70 bg-warning/15",
-    focused: "border-warning bg-warning/25 ring-2 ring-warning/60",
-  },
-  ok: {
-    evidence: "border-success/60 bg-success/10",
-    focused: "border-success bg-success/20 ring-2 ring-success/50",
-  },
+  material: { evidence: "bg-destructive/10", focused: "bg-destructive/20 ring-2 ring-destructive/50" },
+  minor: { evidence: "bg-warning/15", focused: "bg-warning/25 ring-2 ring-warning/60" },
+  ok: { evidence: "bg-success/10", focused: "bg-success/20 ring-2 ring-success/50" },
 };
 
-const NEUTRAL = { evidence: "border-primary/50 bg-accent", focused: "border-primary bg-accent ring-2 ring-primary/50" };
+const NEUTRAL = { evidence: "bg-accent", focused: "bg-accent ring-2 ring-primary/50" };
 
 type Props = {
   turns: Turn[];
@@ -51,7 +42,7 @@ export function TranscriptPanel({ turns, highlightedTurnIds, focusedTurnId, tone
               id={`turn-${turn.id}`}
               aria-current={isFocused ? "true" : undefined}
               className={cn(
-                "grid scroll-mt-12 grid-cols-[3rem_1fr] gap-2 rounded-md border-l-2 border-transparent px-2 py-1.5 text-sm transition-colors duration-300",
+                "grid scroll-mt-12 grid-cols-[3rem_1fr] gap-2 rounded-md px-2 py-1.5 text-sm transition-colors duration-300",
                 isEvidence && toneClass.evidence,
                 isFocused && toneClass.focused,
               )}
