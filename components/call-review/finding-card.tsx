@@ -11,13 +11,14 @@ type Props = {
   finding: Finding;
   decision: FindingDecision | null;
   selected: boolean;
+  focusedTurnId: string | null;
   onSelect: () => void;
   onTurnClick: (turnId: string) => void;
   onDecide: (decision: FindingDecision | null) => void;
   onRemove: () => void;
 };
 
-export function FindingCard({ finding, decision, selected, onSelect, onTurnClick, onDecide, onRemove }: Props) {
+export function FindingCard({ finding, decision, selected, focusedTurnId, onSelect, onTurnClick, onDecide, onRemove }: Props) {
   const dismissed = decision === "dismissed";
   return (
     <article
@@ -60,7 +61,15 @@ export function FindingCard({ finding, decision, selected, onSelect, onTurnClick
       <div className="flex flex-wrap items-center gap-1">
         {finding.turnIds.length > 0 && <span className="text-xs text-muted-foreground">Evidence</span>}
         {finding.turnIds.map((turnId) => (
-          <Button key={turnId} variant="outline" size="xs" className="font-mono" onClick={() => onTurnClick(turnId)}>
+          <Button
+            key={turnId}
+            variant={turnId === focusedTurnId ? "default" : "outline"}
+            size="xs"
+            className="font-mono"
+            aria-pressed={turnId === focusedTurnId}
+            aria-label={`Show turn ${turnId} in the transcript`}
+            onClick={() => onTurnClick(turnId)}
+          >
             {turnId}
           </Button>
         ))}

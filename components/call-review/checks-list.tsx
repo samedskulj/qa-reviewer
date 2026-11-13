@@ -5,7 +5,14 @@ import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import type { Check } from "@/lib/schema";
 
-export function ChecksList({ checks, onTurnClick }: { checks: Check[]; onTurnClick: (turnId: string) => void }) {
+type Props = {
+  checks: Check[];
+  activeTurnIds: string[];
+  focusedTurnId: string | null;
+  onTurnClick: (checkTurnIds: string[], turnId: string) => void;
+};
+
+export function ChecksList({ checks, activeTurnIds, focusedTurnId, onTurnClick }: Props) {
   if (checks.length === 0) return null;
   return (
     <Collapsible className="flex flex-col gap-2">
@@ -18,21 +25,35 @@ export function ChecksList({ checks, onTurnClick }: { checks: Check[]; onTurnCli
       </CollapsibleTrigger>
       <CollapsibleContent>
         <ul className="flex flex-col divide-y rounded-lg border">
-          {checks.map((check) => (
-            <li key={check.category} className="flex flex-col gap-1 p-2 text-sm">
-              <div className="flex flex-wrap items-center gap-1">
-                <span className="font-medium">{check.category}</span>
-                <span className="ml-auto flex gap-1">
-                  {check.turnIds.map((turnId) => (
-                    <Button key={turnId} variant="outline" size="xs" className="font-mono" onClick={() => onTurnClick(turnId)}>
-                      {turnId}
-                    </Button>
-                  ))}
-                </span>
-              </div>
-              <p className="text-xs text-muted-foreground">{check.note}</p>
-            </li>
-          ))}
+          {checks.map((check) => {
+            const isActive = check.turnIds.length > 0 && check.turnIds.every((id) => activeTurnIds.includes(id));
+            return (
+              <li key={check.category} className="flex flex-col gap-1 p-2 text-sm">
+                <div className="flex flex-wrap items-center gap-1">
+                  <span className="font-medium">{check.category}</span>
+                  <span className="ml-auto flex gap-1">
+                    {check.turnIds.map((turnId) => {
+                      const focused = isActive && turnId === focusedTurnId;
+                      return (
+                        <Button
+                          key={turnId}
+                          variant={focused ? "default" : "outline"}
+                          size="xs"
+                          className="font-mono"
+                          aria-pressed={focused}
+                          aria-label={`Show turn ${turnId} in the transcript`}
+                          onClick={() => onTurnClick(check.turnIds, turnId)}
+                        >
+                          {turnId}
+                        </Button>
+                      );
+                    })}
+                  </span>
+                </div>
+                <p className="text-xs text-muted-foreground">{check.note}</p>
+              </li>
+            );
+          })}
         </ul>
       </CollapsibleContent>
     </Collapsible>

@@ -31,16 +31,40 @@ export function CallReview({ call, findings, checks, suggestedVerdict, rationale
   const { reviews, updateReview } = useReviews();
   const review = reviews[call.id];
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  /** The single turn the reviewer jumped to; shown with a stronger highlight than the rest of the evidence. */
+  const [focusedTurnId, setFocusedTurnId] = useState<string | null>(null);
+  /** Evidence turns of a "Checked and OK" item the reviewer jumped to (no finding selected). */
+  const [checkTurnIds, setCheckTurnIds] = useState<string[]>([]);
 
   const allFindings = useMemo(() => [...findings, ...(review?.manualFindings ?? [])], [findings, review?.manualFindings]);
   const selected = allFindings.find((finding) => finding.id === selectedId) ?? null;
   const pendingCount = allFindings.filter((finding) => finding.source !== "reviewer" && !review?.decisions[finding.id]).length;
+  const highlightedTurnIds = selected ? selected.turnIds : checkTurnIds;
 
   function selectFinding(id: string) {
     const finding = allFindings.find((item) => item.id === id);
-    setSelectedId((current) => (current === id ? null : id));
-    const firstTurn = finding?.turnIds[0];
-    if (firstTurn && selectedId !== id) scrollToTurn(firstTurn);
+    const deselecting = selectedId === id;
+    setSelectedId(deselecting ? null : id);
+    setCheckTurnIds([]);
+    const firstTurn = finding?.turnIds[0] ?? null;
+    setFocusedTurnId(deselecting ? null : firstTurn);
+    if (firstTurn && !deselecting) scrollToTurn(firstTurn);
+  }
+
+  /** Evidence chip on a finding: select that finding and focus the clicked turn. */
+  function focusFindingTurn(findingId: string, turnId: string) {
+    setSelectedId(findingId);
+    setCheckTurnIds([]);
+    setFocusedTurnId(turnId);
+    scrollToTurn(turnId);
+  }
+
+  /** Evidence chip on a "Checked and OK" item: highlight that check's turns. */
+  function focusCheckTurn(turnIds: string[], turnId: string) {
+    setSelectedId(null);
+    setCheckTurnIds(turnIds);
+    setFocusedTurnId(turnId);
+    scrollToTurn(turnId);
   }
 
   function scrollToTurn(turnId: string) {
@@ -115,7 +139,8 @@ export function CallReview({ call, findings, checks, suggestedVerdict, rationale
                     decision={review?.decisions[finding.id] ?? null}
                     selected={finding.id === selectedId}
                     onSelect={() => selectFinding(finding.id)}
-                    onTurnClick={scrollToTurn}
+                    focusedTurnId={finding.id === selectedId ? focusedTurnId : null}
+                    onTurnClick={(turnId) => focusFindingTurn(finding.id, turnId)}
                     onDecide={(decision) =>
                       updateReview(call.id, (current) => {
                         const decisions = { ...current.decisions };
@@ -137,7 +162,12 @@ export function CallReview({ call, findings, checks, suggestedVerdict, rationale
           )}
         </div>
 
-        <ChecksList checks={checks} onTurnClick={scrollToTurn} />
+        <ChecksList
+          checks={checks}
+          focusedTurnId={selected ? null : focusedTurnId}
+          activeTurnIds={checkTurnIds}
+          onTurnClick={focusCheckTurn}
+        />
 
         <VerdictPanel
           verdict={review?.verdict ?? null}
@@ -152,7 +182,12 @@ export function CallReview({ call, findings, checks, suggestedVerdict, rationale
         />
       </section>
 
-      <TranscriptPanel turns={call.turns} highlightedTurnIds={selected?.turnIds ?? []} />
+      <TranscriptPanel
+        turns={call.turns}
+        highlightedTurnIds={highlightedTurnIds}
+        focusedTurnId={highlightedTurnIds.length > 0 ? focusedTurnId : null}
+        tone={selected?.severity ?? (checkTurnIds.length > 0 ? "ok" : null)}
+      />
     </div>
   );
 }
